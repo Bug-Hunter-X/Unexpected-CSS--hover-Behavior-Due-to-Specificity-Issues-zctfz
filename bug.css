@@ -1,0 +1,22 @@
+The following CSS code snippet demonstrates an issue where the `:hover` pseudo-class unexpectedly affects elements outside its intended scope due to a lack of specificity:
+
+```css
+.container {
+  width: 200px;
+  height: 200px;
+  background-color: lightgray;
+}
+
+.container:hover .inner {
+  background-color: lightblue;
+}
+
+.inner {
+  width: 100px;
+  height: 100px;
+  background-color: lightcoral;
+  margin: 50px;
+}
+```
+
+If you hover over the `.container`, the `.inner` element's background color changes as expected.  However, this same behavior can unexpectedly affect other `.inner` elements on the page if they exist outside of the `.container`, particularly if no other CSS rules affect them with higher specificity.  This is a common problem arising from the cascading nature of CSS and the potential ambiguity in selector specificity.
