@@ -1,0 +1,28 @@
+The solution addresses the specificity issue by adding an extra class to the `inner` element only within the `container`, giving it a higher specificity to target specifically that `inner` element when hovering over the `container`:
+
+```css
+.container {
+  width: 200px;
+  height: 200px;
+  background-color: lightgray;
+}
+
+.container:hover .inner.container-inner {
+  background-color: lightblue;
+}
+
+.inner {
+  width: 100px;
+  height: 100px;
+  background-color: lightcoral;
+  margin: 50px;
+}
+
+.container .inner {
+  background-color: lightcoral;
+  /* Added class to target inner element only within the container */
+  class="container-inner";
+}
+```
+
+Now, only the `.inner` element inside the `.container` will be affected by the `:hover` effect, solving the unexpected behavior.
